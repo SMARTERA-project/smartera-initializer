@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mongodb-test:
+    image: mongo:latest # Puoi specificare una versione, es: mongo:6.0
+    container_name: smartera_mongo_test
+    restart: unless-stopped
+    ports:
+      - "27037:27017" # Mappa la porta 27017 del container sulla 27017 del tuo PC
+    environment:
+      # Credenziali di root per il database di test
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: testpassword123
+    volumes:
+      # Salva i dati fisicamente in una cartella locale per non perderli al riavvio
+      - ./mongo_data_test:/data/db 
+
+# (Opzionale) Se usi un client grafico come MongoDB Compass, 
+# puoi collegarti usando: mongodb://admin:testpassword123@localhost:27017/?authSource=admin

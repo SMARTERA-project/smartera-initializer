@@ -1,0 +1,44 @@
+[
+  {
+    "name": "valle-di-sole",
+    "pilot": "P1",
+    "pilot_nuts1": "Nord-Est",
+    "pilot_nuts2": "Provincia Autonoma di Trento",
+    "pilot_nuts3": "Trento"
+  },
+  {
+    "name": "tramuntana-soller",
+    "pilot": "P2",
+    "pilot_nuts1": "Este",
+    "pilot_nuts2": "Illes Balears",
+    "pilot_nuts3": "Mallorca"
+  },
+  {
+    "name": "northern-ostrobothnia",
+    "pilot": "P3",
+    "pilot_nuts1": "Manner-Suomi",
+    "pilot_nuts2": "Pohjois- ja Itä-Suomi",
+    "pilot_nuts3": "Pohjois-Pohjanmaa"
+  },
+  {
+    "name": "east-herzegovina",
+    "pilot": "P4",
+    "pilot_nuts1": "Bosnia and Herzegovina",
+    "pilot_nuts2": null,
+    "pilot_nuts3": null
+  },
+  {
+    "name": "smarje-padna",
+    "pilot": "P5",
+    "pilot_nuts1": "Slovenia",
+    "pilot_nuts2": "Zahodna Slovenija",
+    "pilot_nuts3": "Obalno-kraška"
+  },
+  {
+    "name": "devetaki-plateau",
+    "pilot": "P6",
+    "pilot_nuts1": "Severna i Yugoiztochna Bulgaria",
+    "pilot_nuts2": "Severozapaden",
+    "pilot_nuts3": "Lovech"
+  }
+]
