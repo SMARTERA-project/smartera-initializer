@@ -20,7 +20,6 @@ class GraphqlService {
     }
 
     const result = await response.json();
-    console.log(`\n  > graphqlService.executeQuery  result -> ${JSON.stringify(result.data)} `);
     if (result.errors) {
       throw new Error(result.errors[0].message);
     }
