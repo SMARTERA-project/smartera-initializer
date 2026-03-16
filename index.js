@@ -38,7 +38,7 @@ async function start() {
     let totalFilesSuccess = 0;
     let totalFilesFailed = 0;
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < fileUrls.length; i++) {
       const fileUrl = fileUrls[i];
       console.log(`\n--- Processing [${i + 1}/${fileUrls.length}] ---`);
       console.log(`File: ${fileUrl.split("/").pop()}`);

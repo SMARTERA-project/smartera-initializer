@@ -7,8 +7,6 @@ class GraphqlService {
     if (variables) {
       payload.variables = variables;
     }
-    console.log(`\n  > graphqlService.executeQuery    payload -> ${JSON.stringify(payload)} `);
-    console.log(`\n  > graphqlService.executeQuery  variables -> ${JSON.stringify(variables)} `);
 
     const response = await fetch(config.api.graphqlEndpoint, {
       method: 'POST',
