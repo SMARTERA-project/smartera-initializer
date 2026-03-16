@@ -19,7 +19,8 @@ module.exports = {
         GITHUB_TOKEN: "YOUR_GITHUB_PERSONAL_ACCESS_TOKEN_HERE",
         GRAPHQL_ENDPOINT: "https://api.yourdomain.com/graphql",
         MONGO_URI: "mongodb://admin:password@localhost:27017/?authSource=admin",
-      }
+        CACHE_ONLY: false
+      },
     }
   ]
 };

@@ -7,6 +7,8 @@ class GraphqlService {
     if (variables) {
       payload.variables = variables;
     }
+    console.log(`\n  > graphqlService.executeQuery    payload -> ${JSON.stringify(payload)} `);
+    console.log(`\n  > graphqlService.executeQuery  variables -> ${JSON.stringify(variables)} `);
 
     const response = await fetch(config.api.graphqlEndpoint, {
       method: 'POST',
@@ -20,6 +22,7 @@ class GraphqlService {
     }
 
     const result = await response.json();
+    console.log(`\n  > graphqlService.executeQuery  result -> ${JSON.stringify(result.data)} `);
     if (result.errors) {
       throw new Error(result.errors[0].message);
     }

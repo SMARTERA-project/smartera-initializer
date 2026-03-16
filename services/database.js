@@ -1,5 +1,6 @@
 const { MongoClient } = require('mongodb');
 const config = require('../config');
+const isCacheOnly = config.db.cacheOnly;
 
 class DatabaseService {
   constructor() {
@@ -23,7 +24,7 @@ class DatabaseService {
 
   // Inserts an array of records into the temporary collection
   async insertTempData(data) {
-    if (data && Array.isArray(data) && data.length > 0) {
+    if (!isCacheOnly && data && Array.isArray(data) && data.length > 0) {
       await this.tempCollection.insertMany(data);
       return data.length;
     }

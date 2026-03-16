@@ -15,7 +15,8 @@ module.exports = {
     uri: process.env.MONGO_URI || 'mongodb://localhost:27037',
     name: 'frontend_db',
     finalCollection: 'smartness_data',
-    tempCollection: 'smartness_data_temp'
+    tempCollection: 'smartness_data_temp',
+    cacheOnly: process.env.CACHE_ONLY || false
   },
   paths: {
     regionsFile: path.join(__dirname, 'regions.json')

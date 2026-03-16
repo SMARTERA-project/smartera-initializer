@@ -4,41 +4,86 @@
     "pilot": "P1",
     "pilot_nuts1": "Nord-Est",
     "pilot_nuts2": "Provincia Autonoma di Trento",
-    "pilot_nuts3": "Trento"
+    "pilot_nuts3": "Trento",
+    "village": [
+      "P1 - Valle di Sole - Caldes",
+      "P1 - Valle di Sole - Cavizzana",
+      "P1 - Valle di Sole - Commezzadura",
+      "P1 - Valle di Sole - Croviana",
+      "P1 - Valle di Sole - Dimaro Folgarida",
+      "P1 - Valle di Sole - Male",
+      "P1 - Valle di Sole - Mezzana",
+      "P1 - Valle di Sole - Ossana",
+      "P1 - Valle di Sole - Peio",
+      "P1 - Valle di Sole - Pellizzano",
+      "P1 - Valle di Sole - Rabbi",
+      "P1 - Valle di Sole - Terzolas",
+      "P1 - Valle di Sole - Vermiglio"
+    ]
   },
   {
     "name": "tramuntana-soller",
     "pilot": "P2",
     "pilot_nuts1": "Este",
     "pilot_nuts2": "Illes Balears",
-    "pilot_nuts3": "Mallorca"
+    "pilot_nuts3": "Mallorca",
+    "village": [
+      "P2 - Soller Tramuntana - Fornalutx Biniaraix",
+      "P2 - Soller Tramuntana - Port of Soller",
+      "P2 - Soller Tramuntana - Soller"
+    ]
   },
   {
     "name": "northern-ostrobothnia",
     "pilot": "P3",
     "pilot_nuts1": "Manner-Suomi",
     "pilot_nuts2": "Pohjois- ja Itä-Suomi",
-    "pilot_nuts3": "Pohjois-Pohjanmaa"
+    "pilot_nuts3": "Pohjois-Pohjanmaa",
+    "village": [
+      "P3 - Northern Ostrobothnia - Alavieska",
+      "P3 - Northern Ostrobothnia - Kalajoki",
+      "P3 - Northern Ostrobothnia - Nivala"
+    ]
   },
   {
     "name": "east-herzegovina",
     "pilot": "P4",
     "pilot_nuts1": "Bosnia and Herzegovina",
     "pilot_nuts2": null,
-    "pilot_nuts3": null
+    "pilot_nuts3": null,
+    "village": [
+      "P4 - East Herzegovina - Gacko",
+      "P4 - East Herzegovina - Nevesinje",
+      "P4 - East Herzegovina - Bileca"
+    ]
   },
   {
     "name": "smarje-padna",
     "pilot": "P5",
     "pilot_nuts1": "Slovenia",
     "pilot_nuts2": "Zahodna Slovenija",
-    "pilot_nuts3": "Obalno-kraška"
+    "pilot_nuts3": "Obalno-kraška",
+    "village": [
+      "P5 - Smarje-Padna - Padna",
+      "P5 - Smarje-Padna - Smarje"
+    ]
   },
   {
     "name": "devetaki-plateau",
     "pilot": "P6",
     "pilot_nuts1": "Severna i Yugoiztochna Bulgaria",
     "pilot_nuts2": "Severozapaden",
-    "pilot_nuts3": "Lovech"
+    "pilot_nuts3": "Lovech",
+    "village": [
+      "P6 - Devetaki Plateau - Agatovo",
+      "P6 - Devetaki Plateau - Aleksandrovo",
+      "P6 - Devetaki Plateau - Brestovo",
+      "P6 - Devetaki Plateau - Gorsko Slivovo",
+      "P6 - Devetaki Plateau - Kakrina",
+      "P6 - Devetaki Plateau - Karpachevo",
+      "P6 - Devetaki Plateau - Kramolin",
+      "P6 - Devetaki Plateau - Krushuna",
+      "P6 - Devetaki Plateau - Tepava"
+    ]
   }
 ]
