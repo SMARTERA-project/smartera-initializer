@@ -53,9 +53,11 @@ async function start() {
       }
     }
 
-    // 5. Final Database Swap
-    console.log("\n--- Executing Zero-Downtime Collection Swap ---");
-    await dbService.swapCollections();
+    if (!isCacheOnly) {
+      // 5. Final Database Swap
+      console.log("\n--- Executing Zero-Downtime Collection Swap ---");
+      await dbService.swapCollections();
+    }
 
     // Summary
     console.log(`\n=== SYNCHRONIZATION COMPLETED ===`);
@@ -64,8 +66,10 @@ async function start() {
   } catch (globalError) {
     console.error("\n MAIN PROCESS CRASHED:", globalError.message);
   } finally {
-    await dbService.close();
-    console.log("Database connection closed.");
+    if (!isCacheOnly) {
+      await dbService.close();
+      console.log("Database connection closed.");
+    }
   }
 }
 
