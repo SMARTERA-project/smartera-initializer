@@ -16,7 +16,7 @@ module.exports = {
     name: 'frontend_db',
     finalCollection: 'smartness_data',
     tempCollection: 'smartness_data_temp',
-    cacheOnly: process.env.CACHE_ONLY || false
+    cacheOnly: process.env.CACHE_ONLY || true
   },
   paths: {
     regionsFile: path.join(__dirname, 'regions.json')

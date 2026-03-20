@@ -5,6 +5,7 @@ const dbService = require("./services/database");
 const etlProcessor = require("./core/etlProcessor");
 
 async function start() {
+  const isCacheOnly = config.db.cacheOnly;
   try {
     console.log("\n\n--- Starting ETL Data Synchronization Process ---");
 
@@ -27,7 +28,6 @@ async function start() {
     console.log(
       "\n[3/4] Connecting to database and clearing temporary area..."
     );
-    const isCacheOnly = config.db.cacheOnly;
     if (!isCacheOnly) {
       await dbService.connect();
       await dbService.clearTempData();
