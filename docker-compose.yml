@@ -7,13 +7,15 @@ services:
     container_name: smartera-mongodb
     restart: unless-stopped
     ports:
-      - "27017:27017"
+      - "27037:27017"
     volumes:
       - mongo_data:/data/db
 
   # 2. Node.js (ETL)
   smartera-etl:
-    build: ./etl-nodejs # Dockerfile Node.js folder
+    build: 
+      context: ./etl-nodejs/
+      #dockerfile: ./etl-nodejs/Dockerfile
     container_name: smartera-etl-sync
     restart: unless-stopped
     depends_on:

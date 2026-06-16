@@ -9,7 +9,7 @@ module.exports = {
     token: process.env.GITHUB_TOKEN || ''
   },
   api: {
-    graphqlEndpoint: process.env.GRAPHQL_ENDPOINT || 'https://INSERT_REAL_URL_HERE/graphql'
+    graphqlEndpoint: process.env.GRAPHQL_ENDPOINT || 'https://dx-lab.eng.it/graphql'
   },
   db: {
     uri: process.env.MONGO_URI || 'mongodb://localhost:27037',
