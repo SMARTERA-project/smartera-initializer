@@ -24,11 +24,45 @@ services:
       - ./etl-nodejs/ecosystem.config.js:/app/ecosystem.config.js
       - ./etl-nodejs/regions.json:/app/regions.json
 
-  # 3. Python Project (OSM Extractor)
-  smartera-osm:
-    build: ./osm-python # Dockerfile Python folder
-    container_name: smartera-osm-extractor
-    restart: unless-stopped
+  normalize-survey:
+    image: engineeringopsilab/normalize-survey-case
+    build: 
+      context: ./normalize-survey-case
+    pull_policy: always
+    #network_mode: host
+    volumes: 
+      - ./normalize-survey-case/surveys-to-ignore.json:/app/surveys-to-ignore.json
+    environment:
+      MONGO_URI: mongodb://host.docker.internal:22000
+      DB_NAME: Minio-Mongo
+      COLL_NAME: datapoints
+
+  osm-init:
+    image: engineeringopsilab/osm:latest
+    build: ./osm-python
+    pull_policy: always
+    #network_mode: host
+    environment:
+      MONGODB_URI: mongodb://host.docker.internal:22000
+      MONGODB_DB_NAME: Minio-Mongo
+      MONGODB_COLLECTION_NAME: datapoints
+    restart: "no"   
+
+
+  bih-parser:
+    image: engineeringopsilab/bih-py:latest
+    build:
+      context: ./smarteraBiH
+      dockerfile: Dockerfile    
+    pull_policy: always
+    #network_mode: host   
+    restart: "no"
+    volumes:
+      - ./smarteraBiH/excel_data:/app/excel_data
+    environment:
+      MONGODB_URI: mongodb://host.docker.internal:22000
+      MONGODB_DB_NAME: Minio-Mongo
+      MONGODB_COLLECTION_NAME: datapoints
 
 volumes:
   mongo_data:
