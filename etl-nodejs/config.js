@@ -9,14 +9,14 @@ module.exports = {
     token: process.env.GITHUB_TOKEN || ''
   },
   api: {
-    graphqlEndpoint: process.env.GRAPHQL_ENDPOINT || 'https://dx-lab.eng.it/graphql'
+    graphqlEndpoint: process.env.GRAPHQL_ENDPOINT || 'https://smartera.feri.um.si/graphql'
   },
   db: {
     uri: process.env.MONGO_URI || 'mongodb://localhost:27037',
     name: 'frontend_db',
     finalCollection: 'smartness_data',
     tempCollection: 'smartness_data_temp',
-    cacheOnly: process.env.CACHE_ONLY || true
+    cacheOnly: process.env.CACHE_ONLY || false
   },
   paths: {
     regionsFile: path.join(__dirname, 'regions.json')
