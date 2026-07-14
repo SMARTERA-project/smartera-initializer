@@ -15,6 +15,3 @@ services:
       MONGODB_URI: mongodb://host.docker.internal:22000
       MONGODB_DB_NAME: Minio-Mongo
       MONGODB_COLLECTION_NAME: datapoints
-
-volumes:
-  mongo_data:

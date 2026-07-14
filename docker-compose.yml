@@ -39,7 +39,7 @@ services:
 
   osm-init:
     image: engineeringopsilab/osm:latest
-    build: ./osm-python
+    build: ./osm
     pull_policy: always
     #network_mode: host
     environment:
@@ -52,7 +52,7 @@ services:
   bih-parser:
     image: engineeringopsilab/bih-py:latest
     build:
-      context: ./smarteraBiH
+      context: ./bih
       dockerfile: Dockerfile    
     pull_policy: always
     #network_mode: host   
