@@ -13,13 +13,14 @@ services:
 
   # 2. Node.js (ETL)
   smartera-etl:
+    image: engineeringopsilab/smartera-etl
     build: 
       context: ./etl-nodejs/
       #dockerfile: ./etl-nodejs/Dockerfile
     container_name: smartera-etl-sync
     restart: unless-stopped
-    depends_on:
-      - mongodb
+    #depends_on:
+    #  - mongodb
     volumes:
       - ./etl-nodejs/ecosystem.config.js:/app/ecosystem.config.js
       - ./etl-nodejs/regions.json:/app/regions.json
@@ -91,7 +92,7 @@ services:
       COLLECTION_NAME: datapoints
 
   NAMA_10R_3NLP:
-    image: engineeringopsilab/NAMA_10R_3NLP
+    image: engineeringopsilab/nama_10r_3nlp
     build:
       context: ./NAMA_10R_3NLP
       dockerfile: Dockerfile    

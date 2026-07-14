@@ -19,6 +19,6 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY var.json .
-COPY osm_parser.py .
+COPY osm_extractor.py .
 
 CMD ["python", "osm_extractor.py"]

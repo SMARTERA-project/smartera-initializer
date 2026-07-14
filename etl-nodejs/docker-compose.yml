@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  # 1. Database
+  # 2. Node.js (ETL)
+  smartera-etl:
+    image: engineeringopsilab/smartera-etl
+    build: 
+      context: .
+    container_name: smartera-etl-sync
+    restart: unless-stopped
+    #depends_on:
+    #  - mongodb
+    volumes:
+      - ./ecosystem.config.js:/app/ecosystem.config.js
+      - ./regions.json:/app/regions.json
+
+volumes:
+  mongo_data:
