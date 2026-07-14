@@ -10,17 +10,13 @@ try {
 }
 catch (err) {
   console.error('Errore durante il caricamento di surveys-to-ignore.json:', err);
-  console.warn('surveys-to-ignore.json non trovato, procedo senza ignorare alcun survey.');
+  console.warn('nessuna survey ignorata.');
   surveysToIgnore = [];
 }
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:22000';
 const DB_NAME = process.env.DB_NAME || 'Minio-Mongo';
 const COLL_NAME = process.env.COLL_NAME || 'datapoints';
-
-if (!MONGO_URI) {
-  throw new Error('MONGO_URI non è impostato.');
-}
 
 const EXCLUDED_FIELDS = ['_id', 'survey', 'timestamp'];
 

@@ -1,0 +1,15 @@
+{
+  "name": "create-survey",
+  "version": "1.0.0",
+  "main": "create-survey.js",
+  "scripts": {
+    "start": "node create-survey",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mongodb": "^7.5.0"
+  }
+}
