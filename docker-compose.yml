@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # 1. Database
+  mongodb:
+    image: mongo:latest
+    container_name: smartera-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  # 2. Node.js (ETL)
+  smartera-etl:
+    build: ./etl-nodejs # Dockerfile Node.js folder
+    container_name: smartera-etl-sync
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    volumes:
+      - ./etl-nodejs/ecosystem.config.js:/app/ecosystem.config.js
+      - ./etl-nodejs/regions.json:/app/regions.json
+
+  # 3. Python Project (OSM Extractor)
+  smartera-osm:
+    build: ./osm-python # Dockerfile Python folder
+    container_name: smartera-osm-extractor
+    restart: unless-stopped
+
+volumes:
+  mongo_data:
