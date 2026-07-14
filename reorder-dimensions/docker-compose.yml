@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+
+  reorder-dimensions:
+    image: engineeringopsilab/reorder-dimensions
+    build:
+      context: .
+      dockerfile: Dockerfile    
+    pull_policy: always
+    #network_mode: host   
+    restart: "no"
+    environment:
+      MONGODB_URI: mongodb://host.docker.internal:22000
+      DB_NAME: Minio-Mongo
+      COLL: datapoints
+      WORKERS: 6

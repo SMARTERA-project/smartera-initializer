@@ -40,7 +40,7 @@ services:
   create-survey:
     image: engineeringopsilab/create-survey
     build: 
-      context: .
+      context: ./create-survey
     pull_policy: always
     #network_mode: host
     volumes: 
@@ -100,6 +100,20 @@ services:
     environment:
       ORION_URL: https://dx-lab.eng.it/contextBroker
     command: sh /script.sh
+
+  reorder-dimensions:
+    image: engineeringopsilab/reorder-dimensions
+    build:
+      context: ./reorder-dimensions
+      dockerfile: Dockerfile    
+    pull_policy: always
+    #network_mode: host   
+    restart: "no"
+    environment:
+      MONGODB_URI: mongodb://host.docker.internal:22000
+      DB_NAME: Minio-Mongo
+      COLL: datapoints
+      WORKERS: 6
 
 volumes:
   mongo_data:
