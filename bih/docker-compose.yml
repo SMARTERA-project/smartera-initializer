@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  bih-parser:
+    image: engineeringopsilab/bih-py:latest
+    build:
+      context: .
+      dockerfile: Dockerfile    
+    pull_policy: always
+    #network_mode: host   
+    restart: "no"
+    volumes:
+      - ./excel_data:/app/excel_data
+    environment:
+      MONGODB_URI: mongodb://host.docker.internal:22000
+      MONGODB_DB_NAME: Minio-Mongo
+      MONGODB_COLLECTION_NAME: datapoints

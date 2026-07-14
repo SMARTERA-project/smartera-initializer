@@ -1,0 +1,15 @@
+{
+  "name": "normalize-survey-case",
+  "version": "1.0.0",
+  "main": "normalize-survey-case.js",
+  "scripts": {
+    "start": "node normalize-survey-case",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mongodb": "^7.5.0"
+  }
+}

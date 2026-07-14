@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  osm-init:
+    image: engineeringopsilab/osm:latest
+    build: .
+    pull_policy: always
+    #network_mode: host
+    environment:
+      MONGODB_URI: mongodb://host.docker.internal:22000
+      MONGODB_DB_NAME: Minio-Mongo
+      MONGODB_COLLECTION_NAME: datapoints
+    restart: "no"   
