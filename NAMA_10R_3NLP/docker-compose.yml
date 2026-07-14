@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  NAMA_10R_3NLP:
+    image: engineeringopsilab/NAMA_10R_3NLP
+    build:
+      context: .
+      dockerfile: Dockerfile    
+    pull_policy: always
+    restart: "no"
+    environment:
+      ORION_URL: https://dx-lab.eng.it/contextBroker
+    command: sh /script.sh

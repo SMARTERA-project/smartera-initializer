@@ -1,0 +1,18 @@
+{
+  "type": "DistributionDCAT-AP",
+  "description": "Inserito a mano",
+  "title": "                                       SDMX 2 1",
+  "accessUrl": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nama_10r_3nlp?format=sdmx_2.1_structured&compressed=true",
+  "byteSize": "unknown",
+  "checksum": "unknown",
+  "downloadURL": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/nama_10r_3nlp?format=sdmx_2.1_structured&compressed=true",
+  "language": [],
+  "license": "",
+  "mediaType": "application/xml",
+  "rights": "http://publications.europa.eu/resource/authority/access-right/PUBLIC",
+  "format": "XML",
+  "status": "",
+  "bucketName": "defaultBucket",
+  "prefix": "",
+  "id": "urn:ngsi-ld:DistributionDCAT-AP:id:nama_10r_3nlp"
+}

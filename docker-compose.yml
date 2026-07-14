@@ -90,5 +90,16 @@ services:
       DB_NAME: Minio-Mongo
       COLLECTION_NAME: datapoints
 
+  NAMA_10R_3NLP:
+    image: engineeringopsilab/NAMA_10R_3NLP
+    build:
+      context: ./NAMA_10R_3NLP
+      dockerfile: Dockerfile    
+    pull_policy: always
+    restart: "no"
+    environment:
+      ORION_URL: https://dx-lab.eng.it/contextBroker
+    command: sh /script.sh
+
 volumes:
   mongo_data:
