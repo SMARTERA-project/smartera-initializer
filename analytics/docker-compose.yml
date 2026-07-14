@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  analytics:
+    image: engineeringopsilab/analytics
+    build:
+      context: .
+      dockerfile: Dockerfile    
+    pull_policy: always
+    #network_mode: host   
+    restart: "no"
+    environment:
+      MONGO_URI: mongodb://host.docker.internal:22000
+      DB_NAME: Minio-Mongo
+      COLLECTION_NAME: datapoints

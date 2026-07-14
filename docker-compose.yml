@@ -64,5 +64,18 @@ services:
       MONGODB_DB_NAME: Minio-Mongo
       MONGODB_COLLECTION_NAME: datapoints
 
+  analytics:
+    image: engineeringopsilab/analytics
+    build:
+      context: ./analytics
+      dockerfile: Dockerfile    
+    pull_policy: always
+    #network_mode: host   
+    restart: "no"
+    environment:
+      MONGO_URI: mongodb://host.docker.internal:22000
+      DB_NAME: Minio-Mongo
+      COLLECTION_NAME: datapoints
+
 volumes:
   mongo_data:

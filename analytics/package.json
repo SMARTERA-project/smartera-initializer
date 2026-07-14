@@ -1,0 +1,15 @@
+{
+  "name": "analytics",
+  "version": "1.0.0",
+  "main": "analytics.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node analytics.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mongodb": "^7.5.0"
+  }
+}
