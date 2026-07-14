@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+
+  normalize-survey:
+    image: engineeringopsilab/normalize-survey-case
+    build: 
+      context: .
+    pull_policy: always
+    #network_mode: host
+    volumes: 
+      - ./surveys-to-ignore.json:/app/surveys-to-ignore.json
+    environment:
+      MONGO_URI: mongodb://host.docker.internal:22000
+      DB_NAME: Minio-Mongo
+      COLL_NAME: datapoints
