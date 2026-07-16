@@ -1,6 +1,10 @@
-# Smartera Datapoints Processing Flow
+# Smartera initializer
 
-This document describes the processing and normalization flow applied to the Smartera `datapoints` collection.
+This repository contains a complementary suite of tools and scripts for the Smartera project.
+
+Some datasets cannot be imported through IDRA, and some dataset dimensions need to follow a specific order in the database to be compatible with the Data Dashboard. This repository provides the tools required to import the remaining datasets and reorder their dimensions accordingly.
+
+Following section describes the processing and normalization flow applied to the Smartera `datapoints` collection.
 
 ## Data Ingestion
 
@@ -22,11 +26,9 @@ This document describes the processing and normalization flow applied to the Sma
 
   * It appears to exist in IDRA but not in Orion. This should be verified.
 
-## Region Normalization (deprecated)
+## Region Normalization (integrated directly in Data-model-mapper)
 
 All region values containing `NON_NUTS` or the equivalent placeholder value were replaced with the corresponding value from the `geo` field.
-
-* **Note:** This was integrated directly in Data-model-mapper
 
 ## Dimension Reordering
 
@@ -45,15 +47,13 @@ The main entry point is:
 reorder-dimensions.parallel
 ```
 
-## Year Dimension Reordering (deprecated)
+## Year Dimension Reordering (yearToLast replaced by `reorder-dimensions.parallel`)
 
 The initial dimension reordering is not sufficient because year dimensions must always be placed at the end of the dimensions array.
 
 The `yearToLast` script, originally named `year-to-last`, fixes this issue.
 
 Surveys already handled by `reorder-dimensions.parallel` are not excluded from `yearToLast` so run `yearToLast` before.
-
-* **Note:** now integrated in `reorder-dimensions.parallel`
 
 ### Execution Order
 
@@ -109,15 +109,13 @@ The scope is intentionally restricted through `TARGET_SURVEYS`.
 >
 > Doing so could delete legitimate final dimensions from unrelated surveys.
 
-## `PAT_EP_TOT` (deprecated)
+## `PAT_EP_TOT` (swap-pat-geo replaced by `reorder-dimensions.parallel`)
 
 `PAT_EP_TOT` requires additional dimension reordering through:
 
 ```text
 swap-pat-geo
 ```
-
-* **Note:** It now can be avoided because it is integrated in `reorder-dimensions.parallel`
 
 ### Possible Configuration-Based Alternative (done)
 
@@ -149,9 +147,7 @@ Before using this configuration, verify in the database that:
 * `pat_year` maps to `time_period` in `obsHR`.
 * The stored values are correct.
 
-* **Note:** It now can be avoided because it is integrated in `reorder-dimensions.parallel`
-
-## `ROAD_GO_NA_RL3G` (deprecated)
+## `ROAD_GO_NA_RL3G` (reorder-road-goods replaced by `reorder-dimensions.parallel`)
 
 `ROAD_GO_NA_RL3G` currently requires:
 
@@ -181,9 +177,7 @@ The corresponding `category-to-obshr` mappings are:
 
 Verify the ObsHR mappings and stored database values before replacing `reorder-road-goods` with the generic reordering procedure.
 
-* **Note:** It now can be avoided because it is integrated in `reorder-dimensions.parallel`
-
-## `CENS_21CTZ_R3` (deprecated)
+## `CENS_21CTZ_R3` (reorder-one-survey replaced by `reorder-dimensions.parallel`)
 
 `CENS_21CTZ_R3` requires an additional positional fix.
 
