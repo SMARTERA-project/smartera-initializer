@@ -83,7 +83,7 @@ export function checkDoc(dims, obsHR, cfg, CAT) {
     const exp = ob[key];
     if (exp === undefined) { problems.push({ pos, token: label, kind: 'no-key', detail: key }); return; }
     if (pos < 0 || pos >= L) { problems.push({ pos, token: label, kind: 'out-of-range', exp }); return; }
-    if (dims[pos] !== exp) problems.push({ pos, token: label, kind: 'wrong', got: dims[pos], exp });
+    if (dims[pos] !== exp) problems.push({ pos, token: label, kind: 'wrong', got: dims[pos], exp, gotKey: keysForLabel(ob, dims[pos]).join('|') || '—', expKey: key });
   };
 
   for (const [posStr, token] of Object.entries(cfg.pins || {})) checkAt(Number(posStr), token, false);
@@ -153,6 +153,7 @@ function selfTest() {
     { geo: 'Sofia', sex: 'Total', marsta: 'Married', time_period: '2021' }, cfg, CAT);
   ok(bad.length === 1 && bad[0].kind === 'wrong' && bad[0].pos === 2 && bad[0].got === 'Married' && bad[0].exp === 'Total',
     'checkDoc: sesso fuori posto rilevato (wrong)');
+  ok(bad[0].gotKey === 'marsta' && bad[0].expKey === 'sex', 'checkDoc: chiave obsHR intrusa (marsta) e attesa (sex) riportate');
   const noKey = checkDoc(['Sofia', 'X', 'Y', '2021'], { geo: 'Sofia', time_period: '2021' }, cfg, CAT);
   ok(noKey.some((p) => p.kind === 'no-key' && p.detail === 'sex'), 'checkDoc: chiave obsHR mancante rilevata');
   const lastBad = checkDoc(['Sofia', 'M', 'Total', '2021', 'coda'],
@@ -164,7 +165,7 @@ function selfTest() {
 }
 
 function makeBuckets() {
-  const buckets = new Map();
+  const buckets = new Map(); // L -> { candidates, count, example:Map<pos,label> }
   const feed = (obsHR, dims) => {
     const L = dims.length;
     let b = buckets.get(L);
@@ -236,7 +237,7 @@ async function scanSurvey(coll, survey, opts, cfg, CAT) {
           let e = byIssue.get(k);
           if (!e) { e = { pos: p.pos, token: p.token, kind: p.kind, count: 0, examples: [] }; byIssue.set(k, e); }
           e.count++;
-          if (e.examples.length < 5) e.examples.push({ id: String(d._id), got: p.got, exp: p.exp, detail: p.detail });
+          if (e.examples.length < 5) e.examples.push({ id: String(d._id), got: p.got, exp: p.exp, detail: p.detail, gotKey: p.gotKey, expKey: p.expKey });
         }
       }
     }
@@ -271,7 +272,7 @@ function printReport(res, cfg, CAT) {
     console.log(`  ${conformi}/${res.total} doc conformi, ${res.badDocs} fuori posto`);
     for (const e of [...res.byIssue.values()].sort((a, b) => b.count - a.count)) {
       const ex = e.examples.map((x) => {
-        if (e.kind === 'wrong') return `${x.id}(got "${x.got}" ≠ atteso "${x.exp}")`;
+        if (e.kind === 'wrong') return `${x.id}(got "${x.got}" [obsHR: ${x.gotKey}] ≠ atteso "${x.exp}" [obsHR: ${x.expKey}])`;
         if (e.kind === 'no-key') return `${x.id}(manca obsHR.${x.detail})`;
         return x.id;
       }).join(', ');
