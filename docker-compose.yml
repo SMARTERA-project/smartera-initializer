@@ -116,5 +116,19 @@ services:
       COLL: datapoints
       WORKERS: 6
 
+  truncate-last:
+    image: engineeringopsilab/truncate-last
+    build:
+      context: ./truncate-last
+      dockerfile: Dockerfile    
+    pull_policy: always
+    #network_mode: host   
+    restart: "no"
+    environment:
+      MONGODB_URI: mongodb://host.docker.internal:22000
+      DB_NAME: Minio-Mongo
+      COLL: datapoints
+      WORKERS: 6
+
 volumes:
   mongo_data:
