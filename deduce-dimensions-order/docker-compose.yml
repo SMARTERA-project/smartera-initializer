@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
 
-  truncate-last:
-    image: engineeringopsilab/truncate-last
+  deduce-dimensions-order:
+    image: engineeringopsilab/deduce-dimensions-order
     build:
       context: .
       dockerfile: Dockerfile    

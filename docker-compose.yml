@@ -61,6 +61,8 @@ services:
       MONGODB_DB_NAME: Minio-Mongo
       MONGODB_COLLECTION_NAME: datapoints
     restart: "no"   
+    volumes:
+      - ./osm/var.json:/app/var.json
 
 
   bih-parser:
@@ -128,7 +130,20 @@ services:
       MONGODB_URI: mongodb://host.docker.internal:22000
       DB_NAME: Minio-Mongo
       COLL: datapoints
-      WORKERS: 6
+
+  
+  deduce-dimensions-order:
+    image: engineeringopsilab/deduce-dimensions-order
+    build:
+      context: ./deduce-dimensions-order
+      dockerfile: Dockerfile    
+    pull_policy: always
+    #network_mode: host   
+    restart: "no"
+    environment:
+      MONGODB_URI: mongodb://host.docker.internal:22000
+      DB_NAME: Minio-Mongo
+      COLL: datapoints
 
 volumes:
   mongo_data:

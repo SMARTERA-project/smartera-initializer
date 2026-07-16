@@ -11,3 +11,5 @@ services:
       MONGODB_DB_NAME: Minio-Mongo
       MONGODB_COLLECTION_NAME: datapoints
     restart: "no"   
+    volumes:
+      - ./var.json:/app/var.json
